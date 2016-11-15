@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="movieTapListener" type="com.keithsmyth.flicks.view.search.MovieAdapter.OnMovieTapListener"/>
+        <variable name="movie" type="com.keithsmyth.flicks.model.Movie"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="@{() -> movieTapListener.onMovieTap(movie)}">
+
+        <ImageView
+            android:id="@+id/poster_image"
+            android:layout_width="66dp"
+            android:layout_height="100dp"
+            custom:posterSmallUrl="@{movie.poster_path}"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/title_text"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/poster_image"
+            android:maxLines="2"
+            android:text="@{movie.title}"/>
+
+        <TextView
+            android:id="@+id/overview_text"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_text"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/poster_image"
+            android:maxLines="3"
+            android:text="@{movie.overview}"/>
+    </RelativeLayout>
+</layout>
